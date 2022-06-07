@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootTest
 class WaterCloudApplicationTests {
 
@@ -22,6 +25,20 @@ class WaterCloudApplicationTests {
 	public void testQueryByQuarter() {
 		double ans = useWaterMapper.queryByQuarter();
 		System.out.println(ans);
+	}
+	@Test
+	public void testQuery() {
+		List ret = new ArrayList<>();
+		ret.add("wuyt");
+		ret.add("1");
+		ret.add("2022");
+		ret.add("1");
+		ret.add("2");
+		ret.add("3");
+		ret.add(String.valueOf(useWaterMapper.queryByQuarter()));
+//        useWaterMapper.queryByQuarter();
+//		return ret;
+		System.out.println(ret.toString());
 	}
 
 }
