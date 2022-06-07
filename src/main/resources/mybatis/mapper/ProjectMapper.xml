@@ -1,0 +1,18 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.ldu.watercloud.mapper.ProjectMapper">
+    <select id="selectUserById" parameterType="int" resultType="User">
+        select *
+        from user
+        where id = #{id}
+    </select>
+    <select id="selectByUserAndUseWaterAndProject" resultType="Charge_day">
+        select project.projname as projname,count(distinct user.id) as user_sum,project.price as price,
+               sum(usewater.amount) as water_sum,sum(usewater.amount) * project.price as money,
+               concat(usewater.year, LPAD(usewater.month,2,0), LPAD(usewater.day,2,0)) as date
+        from project,usewater,user
+        where project.id=user.projid and user.meterid=usewater.id
+    </select>
+</mapper>

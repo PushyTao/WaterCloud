@@ -1,18 +1,20 @@
 server:
   port: 8080
 spring:
+  main:
+    allow-circular-references: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/water?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false
+    type: com.alibaba.druid.pool.DruidDataSource
   thymeleaf:
     cache: false #关闭缓存
 
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: cn.edu.ldu.entity
-
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: cn.edu.ldu.watercloud.entity
 # 分页工具
 pagehelper:
   helper-dialect: mysql
@@ -22,4 +24,4 @@ pagehelper:
 
 authority:
   info: '[{"models":[{"modelId":1,"operation":[1,2,3,4]},{"modelId":1000001,"operation":[1,2,3,4]},{"modelId":2,"operation":[1,2,3,4]},{"modelId":3,"operation":[1,2,3,4]},{"modelId":4,"operation":[1,2,3,4]},{"modelId":5,"operation":[1,2,3,4]}],"level":1,"modelId":1,"name":"管理员"},{"models":[{"modelId":4,"operation":[4,1,2,3]}],"level":2,"modelId":2,"name":"用户"}]'
-
+#日志记录
