@@ -8,7 +8,7 @@
         from user
         where id = #{id}
     </select>
-    <select id="selectByUserAndUseWaterAndProject" resultType="Charge_day">
+    <select id="selectByUserAndUseWaterAndProject" resultType="ChargeDay">
         select project.projname as projname,count(distinct user.id) as user_sum,project.price as price,
                sum(usewater.amount) as water_sum,sum(usewater.amount) * project.price as money,
                concat(usewater.year, LPAD(usewater.month,2,0), LPAD(usewater.day,2,0)) as date

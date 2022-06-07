@@ -6,5 +6,5 @@ package cn.edu.ldu.watercloud.dao;
  * @apiNote
  */
 public interface UseWaterDao {
-
+    double queryByQuarter();
 }
