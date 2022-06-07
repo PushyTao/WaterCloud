@@ -6,4 +6,5 @@ package cn.edu.ldu.watercloud.common;
  * @apiNote
  */
 public class MvcConfig {
+
 }
