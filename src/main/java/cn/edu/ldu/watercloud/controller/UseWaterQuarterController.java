@@ -3,6 +3,7 @@ package cn.edu.ldu.watercloud.controller;
 import cn.edu.ldu.watercloud.dao.UseWaterDao;
 import cn.edu.ldu.watercloud.entity.ResultUWQuarter;
 import cn.edu.ldu.watercloud.entity.User;
+import cn.edu.ldu.watercloud.utils.DownloadUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -125,4 +126,11 @@ public class UseWaterQuarterController {
         return resultUWQuarters;
     }
 
+    @RequestMapping("/download")
+    public void Download(String year,String select1){
+        List<ResultUWQuarter> list= form(year,select1);
+        List<ResultUWQuarter> list1=FindMonth(year,select1);
+        DownloadUtils downloadUtils=new DownloadUtils();
+        downloadUtils.download(list,list1.get(0));
+    }
 }
