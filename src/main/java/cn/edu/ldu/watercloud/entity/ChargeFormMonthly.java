@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor//全参构造
 @ToString
-public class Monthly_charge {
+public class ChargeFormMonthly {
     private String projectName;//项目名
     private int households;//户数
     private double unitPrice;//单价

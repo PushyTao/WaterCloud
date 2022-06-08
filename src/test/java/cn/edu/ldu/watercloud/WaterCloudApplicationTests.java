@@ -1,8 +1,7 @@
 package cn.edu.ldu.watercloud;
 
-import cn.edu.ldu.watercloud.entity.ChargeDay;
 import cn.edu.ldu.watercloud.entity.Daily_charge;
-import cn.edu.ldu.watercloud.entity.Monthly_charge;
+import cn.edu.ldu.watercloud.entity.ChargeFormMonthly;
 import cn.edu.ldu.watercloud.mapper.ProjectMapper;
 import cn.edu.ldu.watercloud.mapper.UseWaterMapper;
 import org.junit.jupiter.api.Test;
@@ -56,14 +55,14 @@ class WaterCloudApplicationTests {
 		for (Daily_charge i: list){
 			System.out.println(i.toString());
 		}
-		List<Monthly_charge> list2 = projectMapper.monthly_charge(year,month);
-		for (Monthly_charge i: list2){
+		List<ChargeFormMonthly> list2 = projectMapper.monthly_charge(year,month);
+		for (ChargeFormMonthly i: list2){
 			System.out.println(i.toString());
 		}
 	}
-	@Test
-	public void test_project(){
-		List<ChargeDay> chargeDays = projectMapper.selectByUserAndUseWaterAndProject();
-		chargeDays.forEach(System.out::println);
-	}
+//	@Test
+//	public void test_project(){
+//		List<ChargeDay> chargeDays = projectMapper.selectByUserAndUseWaterAndProject();
+//		chargeDays.forEach(System.out::println);
+//	}
 }
