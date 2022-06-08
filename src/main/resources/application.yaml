@@ -13,3 +13,6 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
   thymeleaf:
     cache: false
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: cn.edu.ldu.watercloud.entity

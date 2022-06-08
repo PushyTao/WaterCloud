@@ -1,6 +1,7 @@
 package cn.edu.ldu.watercloud.dao;
 
 import cn.edu.ldu.watercloud.entity.User;
+import cn.edu.ldu.watercloud.entity.result.WaterEveryQuarter;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -20,5 +21,7 @@ public interface UseWaterDao {
 
     @Select("select * from user")
     List<User> getAllUser();
+
+    List<WaterEveryQuarter> queryByQuarter(int quarter);
 
 }
