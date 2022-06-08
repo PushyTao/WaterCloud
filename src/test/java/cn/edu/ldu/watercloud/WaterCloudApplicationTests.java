@@ -1,7 +1,6 @@
 package cn.edu.ldu.watercloud;
 
-import cn.edu.ldu.watercloud.mapper.ProjectMapper;
-import cn.edu.ldu.watercloud.mapper.UseWaterMapper;
+import cn.edu.ldu.watercloud.dao.UseWaterDao;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,18 +9,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 class WaterCloudApplicationTests {
 
 	@Autowired
-	ProjectMapper projectMapper;
+	private UseWaterDao useWaterDao;
 
-	@Autowired
-	UseWaterMapper useWaterMapper;
 	@Test
 	void contextLoads() {
-		System.out.println(projectMapper.selectByUserAndUseWaterAndProject());
-	}
-	@Test
-	public void testQueryByQuarter() {
-		double ans = useWaterMapper.queryByQuarter();
-		System.out.println(ans);
+//		List<UserMonthCount> ans;
+//		ans=useWaterDao.FindByYearAndQuarper(2022,8);
+//		for (UserMonthCount an : ans) {
+//			System.out.println(an);
+//		}
 	}
 
 }
