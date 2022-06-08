@@ -21,12 +21,12 @@ public class DayAndMonthChargeController {
         //现将年月日切分出来
         List<ChargeFormMonthly> monthly_charges = new ArrayList<>();
 
-        monthly_charges =projectMapper.monthly_charge();
+        monthly_charges = projectMapper.monthly_charge();
 
-        for (ChargeFormMonthly i: monthly_charges){
+        /*for (ChargeFormMonthly i: monthly_charges){
             System.out.println(i.toString());
-        }
-        System.out.println("???");
+        }*/
+//        System.out.println("???");
         return monthly_charges;
     }
 

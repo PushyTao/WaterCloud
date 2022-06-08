@@ -1,0 +1,69 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.edu.ldu.watercloud.mapper.ProjectMonthRecordStatisticsMapper">
+
+
+    <select id="queryAll" resultType="ProjectMonthRecordStatistics" parameterType="int">
+        select project1.projname as projectName,
+        (
+        select count(user.id)
+        from user,project as project2
+        where project2.id=user.projid and CONCAT(#{yearmonthCur},"01") > user.jointime and project1.projname=project2.projname
+        ) - (
+        select count(user.id)
+        from user,project as project3
+        where project3.id=user.projid and user.ifexit=1 and user.exittime>=CONCAT(#{yearmonthPre},"01") and CONCAT(#{yearmonthCur},"01") > user.exittime and project1.projname=project3.projname
+        ) as lastMonthSum,
+
+        (
+        select count(user.id)
+        from user,project as project4
+        where project4.id=user.projid and project1.projname=project4.projname and user.jointime>=CONCAT(#{yearmonthCur},"01") and CONCAT(#{yearmonthNext},"01") > user.jointime
+        )as curMonthNew,
+
+        (
+        select count(user.id)
+        from user,project as project5
+        where project5.id=user.projid and CONCAT(#{yearmonthNext},"01") > user.jointime and user.ifexit=0 and project1.projname=project5.projname
+        ) as curMonthSum,
+
+        (
+        select count(user.id)
+        from user,project as project6
+        where project6.id=user.projid and CONCAT(#{yearmonthNext},"01") > user.exittime and user.exittime>=CONCAT(#{yearmonthCur},"01") and user.ifexit=1 and project1.projname=project6.projname
+        ) as curMonthQuit,
+
+        (
+        select count(user.id)
+        from usewater,project as project7,user
+        where project7.id=user.projid and usewater.meterid=user.meterid and
+        usewater.year=#{yearmonthCur}/100 and usewater.month=#{yearmonthCur}%100 and project1.projname=project7.projname
+        ) as curMonthGet,
+
+        (
+        select count(user.id)
+        from usewater,project as project8,user
+        where project8.id=user.projid and usewater.meterid=user.meterid and
+        (usewater.year!=#{yearmonthCur}/100 OR usewater.month!=#{yearmonthCur}%100) and project1.projname=project8.projname
+        ) as curMonthNotGet,
+
+        (
+        select count(user.id)
+        from usewater,project as project9,user
+        where project9.id=user.projid and usewater.meterid=user.meterid and project1.projname=project9.projname
+        and usewater.year=#{yearmonthCur}/100 and usewater.month=#{yearmonthCur}%100 and usewater.amount >=8
+        ) as up8,
+        (
+        select count(user.id)
+        from usewater,project as project9,user
+        where project9.id=user.projid and usewater.meterid=user.meterid and project1.projname=project9.projname
+        and usewater.year=#{yearmonthCur}/100 and usewater.month=#{yearmonthCur}%100 and 8 > usewater.amount
+        ) as down8
+        from user,project as project1
+        GROUP BY project1.id
+
+    </select>
+
+</mapper>

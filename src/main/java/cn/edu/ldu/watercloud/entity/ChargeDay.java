@@ -19,4 +19,5 @@ public class ChargeDay {
     private int projectNumDay;
     private double projectPriceDay;
     private String time;
+    private String salesman;
 }

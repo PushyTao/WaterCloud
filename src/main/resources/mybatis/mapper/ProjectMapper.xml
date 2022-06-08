@@ -11,10 +11,12 @@
     <select id="selectByUserAndUseWaterAndProject" resultType="ChargeDay">
         select project.projname as projectName,COUNT(*) as households,project.price as unitPrice
                 ,sum(usewater.amount) as projectNumDay,sum(usewater.amount) * project.price as projectPriceDay,
-               concat(usewater.year, LPAD(usewater.month,2,0), LPAD(usewater.day,2,0)) as time
+               concat(usewater.year, LPAD(usewater.month,2,0), LPAD(usewater.day,2,0)) as time,
+               project.salesman as salesman
         from project
         JOIN user ON project.id=user.projid
         JOIN usewater ON user.meterid=usewater.meterid
         GROUP BY project.id
     </select>
+
 </mapper>
