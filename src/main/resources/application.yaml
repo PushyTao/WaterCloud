@@ -3,6 +3,8 @@ server:
 spring:
   main:
     allow-circular-references: true
+  mvc:
+    date-format: "yyyy-MM-dd"
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root

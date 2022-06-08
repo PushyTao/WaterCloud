@@ -17,7 +17,7 @@ import java.util.List;
  * @apiNote
  */
 @RestController
-@RequestMapping("/yiqing_war/water")
+@RequestMapping("/water")
 @CrossOrigin(origins = "http://127.0.0.1:5500", allowedHeaders = "*", allowCredentials = "true")
 public class UseWaterController {
     @Autowired
