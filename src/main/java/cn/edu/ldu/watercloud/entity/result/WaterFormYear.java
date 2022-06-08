@@ -24,5 +24,9 @@ public class WaterFormYear {
     private String q4th;
 
 
-
+    public WaterFormYear(String userName, String userId, String year) {
+        this.userName = userName;
+        this.userId = userId;
+        this.year = year;
+    }
 }

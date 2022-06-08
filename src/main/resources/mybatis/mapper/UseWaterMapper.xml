@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.edu.ldu.watercloud.mapper.UseWaterMapper">
-    <select id="queryByQuarter" resultType="double">
-        select amount from usewater
-        where userid = 1;
+    <select id="queryByQuarter" parameterType="int" resultType="WaterEveryQuarter">
+        select username as userName,uid as userId,year,sum(cnt)as thisQuarter
+        from (
+            select user.name as username,user.id as uid,usewater.amount as cnt,usewater.year as year
+            from user inner join usewater
+            where usewater.year in(select DISTINCT(year) from usewater)
+            and user.id = usewater.userid and usewater.month between (#{quarter}-1)*3+1 and (#{quarter}-1)*3+3
+            ) as new
+        group by year,username,uid;
+
     </select>
 </mapper>
