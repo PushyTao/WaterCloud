@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
  * @Date: 2022/6/7 17:42
  */
 public class ChargeDay {
-    private String projname;
-    private int user_sum;
-    private double price;
-    private int water_sum;
-    private double money;
-    private String date;
+    private String projectName;
+    private int households;
+    private double unitPrice;
+    private int projectNumDay;
+    private double projectPriceDay;
+    private String time;
 }
