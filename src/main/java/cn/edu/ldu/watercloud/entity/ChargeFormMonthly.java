@@ -14,4 +14,6 @@ public class ChargeFormMonthly {
     private double unitPrice;//单价
     private double projectNumMonthly;//数量
     private double projectPriceMonthly;//金额
+    private int time;
+    private String salesman;
 }

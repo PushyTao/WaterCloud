@@ -15,7 +15,7 @@ public interface ProjectMapper {
 
     @Select("SELECT projectName,households,unitPrice,projectNumDay,projectPriceDay from (select project.projname as projectName,COUNT(user.name) as households,project.price as unitPrice,SUM(usewater.amount) as projectNumDay,SUM(usewater.amount)*project.price as projectPriceDay from project,user,usewater where user.id= usewater.userid and usewater.year=#{year} and usewater.month=#{month} and usewater.day=#{day}) as Daily_charge")
     List<Daily_charge> daily_charge(int year, int month, int day);
-    @Select("SELECT projectName,households,unitPrice,projectNumMonthly,projectPriceMonthly from (select project.projname as projectName,COUNT(user.name) as households,project.price as unitPrice,SUM(usewater.amount) as projectNumMonthly,SUM(usewater.amount)*project.price as projectPriceMonthly from project,user,usewater where user.id= usewater.userid and usewater.year=#{year} and usewater.month=#{month}) as Monthly_charge")
-    List<ChargeFormMonthly> monthly_charge(int year, int month);
+    @Select("select project.projname as projectName,       COUNT(*) as households,       project.price as unitPrice,       sum(usewater.amount) as projectNumMonthly,       sum(usewater.amount) * project.price as projectPriceMonthly,       concat(usewater.year,LPAD(usewater.month,2,0)) as time, project.salesman as salesman from project         JOIN user ON project.id=user.projid         JOIN usewater ON user.meterid=usewater.meterid GROUP BY project.id")
+    List<ChargeFormMonthly> monthly_charge();
 
 }
