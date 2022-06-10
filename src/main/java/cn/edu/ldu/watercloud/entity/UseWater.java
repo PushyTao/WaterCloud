@@ -17,7 +17,7 @@ public class UseWater {
     private int id;
     private int meterid;
     private int userid;
-    private int amount;
+    private double amount;
     private int year;
     private int month;
     private int day;
