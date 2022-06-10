@@ -7,10 +7,7 @@ import cn.edu.ldu.watercloud.mapper.ProjectMapper;
 import cn.edu.ldu.watercloud.mapper.ProjectMonthRecordStatisticsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.SQLOutput;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -23,9 +20,7 @@ public class WaterController {
 
     @PostMapping("/selectChargeFormDaily")
     public List<ChargeDay> charge_day(){
-        List<ChargeDay> charge_day = projectMapper.selectByUserAndUseWaterAndProject();
-        charge_day.forEach(System.out::println);
-        return charge_day;
+        return projectMapper.selectByUserAndUseWaterAndProject();
     }
     @PostMapping("/selectWaterInfo")
     public List<ChargeFormMonthly> projectMonth() {
@@ -33,8 +28,6 @@ public class WaterController {
     }
 
     //业务：项目月记录总分项统计表,controller
-
-
     @Autowired
     ProjectMonthRecordStatisticsMapper tmp;
     @PostMapping("/monthStatistics")
@@ -53,8 +46,6 @@ public class WaterController {
             yearNext = year + 1;
             monthNext = 1;
         }
-        System.out.println(yearPre*100 + monthPre);
-        System.out.println(yearNext * 100 + monthNext);
         return tmp.queryAll(yearPre * 100 + monthPre,yearmonthCur,
                 yearNext * 100 + monthNext);
     }

@@ -11,10 +11,7 @@ import java.util.Date;
  */
 @Data//lombok
 @NoArgsConstructor//无参构造
-@Getter
-@Setter
 @AllArgsConstructor//全参构造
-@ToString
 public class User {
     private int id;
     private String name;

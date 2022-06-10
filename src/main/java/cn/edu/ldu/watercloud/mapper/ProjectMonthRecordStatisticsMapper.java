@@ -12,7 +12,5 @@ import java.util.List;
  */
 @Mapper
 public interface ProjectMonthRecordStatisticsMapper {
-
     List<ProjectMonthRecordStatistics> queryAll(int yearmonthPre,int yearmonthCur, int yearmonthNext);
-
 }

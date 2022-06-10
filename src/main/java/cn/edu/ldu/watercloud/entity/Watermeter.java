@@ -10,10 +10,7 @@ import lombok.*;
  */
 @Data//lombok
 @NoArgsConstructor//无参构造
-@Getter
-@Setter
 @AllArgsConstructor//全参构造
-@ToString
 public class Watermeter {
     private int id;
     private double settleflow;
