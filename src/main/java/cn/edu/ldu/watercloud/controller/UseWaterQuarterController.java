@@ -49,9 +49,9 @@ public class UseWaterQuarterController {
             giv.add(resultUWQuarter);
         }
 //        System.out.println("===============UserMana=================");
-        for (ResultUWQuarter resultUWQuarter : giv) {
-            System.out.println(resultUWQuarter);
-        }
+//        for (ResultUWQuarter resultUWQuarter : giv) {
+//            System.out.println(resultUWQuarter);
+//        }
 //        System.out.println("==============UserMana==================");
         return giv;
     }
@@ -59,8 +59,8 @@ public class UseWaterQuarterController {
     @PostMapping("/find")
     @ResponseBody
     public List<ResultUWQuarter> form(String year, String select1){
-        System.out.println(year);
-        System.out.println(select1);
+//        System.out.println(year);
+//        System.out.println(select1);
         int cnt_year= Integer.parseInt(year);
         int cnt_month=Integer.parseInt(select1);
         List<ResultUWQuarter>giv=new LinkedList<>();
@@ -86,17 +86,17 @@ public class UseWaterQuarterController {
             resultUWQuarter.setCnt3(cnt[2]);
             giv.add(resultUWQuarter);
         }
-        System.out.println("===============form=================");
+//        System.out.println("===============form=================");
         for (ResultUWQuarter resultUWQuarter : giv) {
             System.out.println(resultUWQuarter);
         }
-        System.out.println("==============form==================");
+//        System.out.println("==============form==================");
         return giv;
     }
     @RequestMapping("/tmp_month") //默认的跳转页面
     public List<ResultUWQuarter> TmpMonth(){
         List<ResultUWQuarter> resultUWQuarters=new LinkedList<>();
-        System.out.println("==============TmpMonth==================");
+//        System.out.println("==============TmpMonth==================");
         ResultUWQuarter resultUWQuarter=new ResultUWQuarter();
         resultUWQuarter.setUsername("用户名称");
         resultUWQuarter.setUid("用户编码");
@@ -105,7 +105,7 @@ public class UseWaterQuarterController {
         resultUWQuarter.setCnt2(5);
         resultUWQuarter.setCnt3(6);
         resultUWQuarters.add(resultUWQuarter);
-        System.out.println("==============TmpMonth==================");
+//        System.out.println("==============TmpMonth==================");
         return resultUWQuarters;
     }
     @RequestMapping("/find_month")
@@ -113,7 +113,7 @@ public class UseWaterQuarterController {
         int cnt_year= Integer.parseInt(year);
         int cnt_month=Integer.parseInt(select1);
         List<ResultUWQuarter> resultUWQuarters=new LinkedList<>();
-        System.out.println("==============FindMonth==================");
+//        System.out.println("==============FindMonth==================");
         ResultUWQuarter resultUWQuarter=new ResultUWQuarter();
         resultUWQuarter.setUsername("用户名称");
         resultUWQuarter.setUid("用户编码");
@@ -122,7 +122,7 @@ public class UseWaterQuarterController {
         resultUWQuarter.setCnt2((cnt_month-1)*3+2);
         resultUWQuarter.setCnt3((cnt_month-1)*3+3);
         resultUWQuarters.add(resultUWQuarter);
-        System.out.println("==============FindMonth==================");
+//        System.out.println("==============FindMonth==================");
         return resultUWQuarters;
     }
 

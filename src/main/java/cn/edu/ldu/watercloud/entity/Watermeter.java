@@ -17,5 +17,5 @@ public class Watermeter {
     private double totalflow;
     private double lastflow;
     private double banalnce;
-    private double status;
+    private int status;
 }
