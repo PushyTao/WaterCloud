@@ -3,6 +3,7 @@ package cn.edu.ldu.watercloud.controller;
 import cn.edu.ldu.watercloud.entity.ChargeDay;
 import cn.edu.ldu.watercloud.entity.ChargeFormMonthly;
 import cn.edu.ldu.watercloud.entity.ProjectMonthRecordStatistics;
+import cn.edu.ldu.watercloud.entity.WaterFeeByMonth;
 import cn.edu.ldu.watercloud.mapper.ProjectMapper;
 import cn.edu.ldu.watercloud.mapper.ProjectMonthRecordStatisticsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,13 @@ public class WaterController {
         }
         return tmp.queryAll(yearPre * 100 + monthPre,yearmonthCur,
                 yearNext * 100 + monthNext);
+    }
+
+    @PostMapping("/selectWaterFeeMonthly")
+    public List<WaterFeeByMonth> MonthlyFee(){
+        Calendar nowYearMonth = Calendar.getInstance();
+        int year = nowYearMonth.get(Calendar.YEAR);
+        int month = nowYearMonth.get(Calendar.MONTH) + 1;
+        return tmp.queryWaterFee(year,month);
     }
 }
