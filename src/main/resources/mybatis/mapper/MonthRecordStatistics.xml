@@ -63,7 +63,25 @@
         ) as down8
         from user,project as project1
         GROUP BY project1.id
-
+    </select>
+    <select id="queryWaterFee" parameterType="int" resultType="WaterFeeByMonth">
+        select project1.projname as projectName,project1.price as price,
+               (
+                   select sum(buy.amount)
+                   from buy,project as project2
+                   where project2.projname=project1.projname and project2.projname=buy.projectName and buy.year=2022 and buy.month = 06
+               ) - (
+                   select sum(usewater.amount)
+                   from usewater,project as project3,user
+                   where project3.projname=project1.projname and user.projid=project3.id and usewater.userid=user.id and usewater.year=2022 and usewater.month = 06
+               ) as balance,
+               (
+                   select buy.amount
+                   from buy,project as project4
+                   where project4.projname=project1.projname and project4.projname=buy.projectName and buy.year=2022 and buy.month = 06
+               ) as revenueVolume
+        from project as project1,user
+        GROUP BY project1.id
     </select>
 
 </mapper>

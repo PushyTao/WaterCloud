@@ -4,10 +4,7 @@ import lombok.*;
 
 @Data//lombok
 @NoArgsConstructor//无参构造
-@Getter
-@Setter
 @AllArgsConstructor//全参构造
-@ToString
 public class Daily_charge {
     private String projectName;//项目名
     private int households;//户数
