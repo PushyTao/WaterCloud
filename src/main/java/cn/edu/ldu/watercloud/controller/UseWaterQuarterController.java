@@ -128,8 +128,8 @@ public class UseWaterQuarterController {
 
     @RequestMapping("/download")
     public void Download(String year,String select1){
-        List<ResultUWQuarter> list= form(year,select1);
-        List<ResultUWQuarter> list1=FindMonth(year,select1);
+        List<ResultUWQuarter> list = form(year,select1);
+        List<ResultUWQuarter> list1 = FindMonth(year,select1);
         DownloadUtils downloadUtils=new DownloadUtils();
         downloadUtils.download(list,list1.get(0));
     }

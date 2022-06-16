@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -86,5 +87,15 @@ class WaterCloudApplicationTests {
 		List<ProjectMonthRecordStatistics> tt = tmp.queryAll(yearPre * 100 + monthPre, yearmonthCur,
 				yearNext * 100 + monthNext);
 		tt.forEach(System.out::println);
+	}
+	@Test
+	public void testTimestamp() {
+		Instant timestamp = Instant.now();
+		System.out.println(timestamp);
+		Date d = new Date();
+		System.out.println(d.getTime());
+
+		long timeStamp = System.currentTimeMillis();
+		System.out.println(timeStamp);
 	}
 }

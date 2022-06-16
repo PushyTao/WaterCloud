@@ -1,6 +1,7 @@
 package cn.edu.ldu.watercloud.utils;
 
 import cn.edu.ldu.watercloud.entity.ResultUWQuarter;
+import cn.edu.ldu.watercloud.entity.result.WaterFormYear;
 import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
@@ -136,5 +137,130 @@ public class DownloadUtils {
             e.printStackTrace();
         }
     }
+    public void export(List<WaterFormYear> list,String name){
+        File file = new File(name);
+        //判断file是否存在
+        if(file.exists()) {
+            file.delete();
+        }
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        //创建工作簿
+        WritableWorkbook workbook = null;
+        try {
+            workbook = Workbook.createWorkbook(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        WritableSheet sheet1 = workbook.createSheet("sheet1", 0);
+        Label label=null;
+        //设置列名
+        label=new Label(0,0,"UserName");
+        try {
+            sheet1.addCell(label);
+        } catch (WriteException e) {
+            e.printStackTrace();
+        }
+
+        label=new Label(1,0,"UserID");
+        try {
+            sheet1.addCell(label);
+        } catch (WriteException e) {
+            e.printStackTrace();
+        }
+        label=new Label(2,0,"year");
+        try {
+            sheet1.addCell(label);
+        } catch (WriteException e) {
+            e.printStackTrace();
+        }
+        label=new Label(3,0,"quarter1");
+        try {
+            sheet1.addCell(label);
+        } catch (WriteException e) {
+            e.printStackTrace();
+        }
+        label=new Label(4,0,"quarter2");
+        try {
+            sheet1.addCell(label);
+        } catch (WriteException e) {
+            e.printStackTrace();
+        }
+        label=new Label(5,0,"quarter3");
+        try {
+            sheet1.addCell(label);
+        } catch (WriteException e) {
+            e.printStackTrace();
+        }
+        label=new Label(6,0,"quarter4");
+        try {
+            sheet1.addCell(label);
+        } catch (WriteException e) {
+            e.printStackTrace();
+        }
+        int rowCnt = 0;
+        for(WaterFormYear out:list) {
+            rowCnt++;
+            label=new Label(0,rowCnt,out.getUserName());
+            try {
+                sheet1.addCell(label);
+            } catch (WriteException e) {
+                e.printStackTrace();
+            }
+            label=new Label(1,rowCnt,out.getUserId());
+            try {
+                sheet1.addCell(label);
+            } catch (WriteException e) {
+                e.printStackTrace();
+            }
+            label=new Label(2,rowCnt,out.getYear());
+            try {
+                sheet1.addCell(label);
+            } catch (WriteException e) {
+                e.printStackTrace();
+            }
+            label=new Label(3,rowCnt,out.getQ1st());
+            try {
+                sheet1.addCell(label);
+            } catch (WriteException e) {
+                e.printStackTrace();
+            }
+            label=new Label(4,rowCnt,out.getQ2nd());
+            try {
+                sheet1.addCell(label);
+            } catch (WriteException e) {
+                e.printStackTrace();
+            }
+            label=new Label(5,rowCnt,out.getQ3rd());
+            try {
+                sheet1.addCell(label);
+            } catch (WriteException e) {
+                e.printStackTrace();
+            }
+            label=new Label(6,rowCnt,out.getQ4th());
+            try {
+                sheet1.addCell(label);
+            } catch (WriteException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        try {
+            workbook.write();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            workbook.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (WriteException e) {
+            e.printStackTrace();
+        }
+    }
 }
